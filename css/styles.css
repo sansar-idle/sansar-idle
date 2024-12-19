@@ -1,0 +1,359 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Rajdhani', sans-serif; /* Default body font */
+}
+
+body, .log-window, .generate_resource {
+    -webkit-user-select: none; /* Safari and older WebKit browsers */
+    -moz-user-select: none;    /* Firefox */
+    -ms-user-select: none;     /* Internet Explorer 10+ */
+    user-select: none;         /* Standard property */
+}
+
+body {
+    background-color: #1e1e1e; /* Dark background */
+    color: #cfcfcf; /* Muted white for text */
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    user-select: none;
+}
+
+/* Top Bar */
+.top-bar {
+    background-color: #2b2b2b; /* Dark gray */
+    color: #66ccff; /* Sci-fi blue */
+    display: flex;
+    justify-content: center; /* Center game title */
+    align-items: center;
+    padding: 10px 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    height: 60px; /* Fixed height for top bar */
+}
+
+.game-title {
+    font-family: 'Exo 2', sans-serif; /* Logo font */
+    font-size: 2.5em;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.top-right {
+    position: absolute;
+    right: 20px;
+    display: flex;
+    gap: 15px;
+}
+
+.version-number {
+    font-size: 0.9em;
+    color: #bbbbbb; /* Muted */
+}
+
+.settings-link {
+    color: #66ccff;
+    text-decoration: none;
+    font-size: 0.9em;
+}
+
+.settings-link:hover {
+    text-decoration: underline;
+}
+
+/* Main Layout */
+.main-container {
+    display: grid;
+    grid-template-columns: 200px 1fr 200px;
+    gap: 10px;
+    height: calc(100vh - 100px); /* Subtract height of top bar + 10px spacing */
+    width: 100%; /* Default to full width */
+    max-width: 1000px; /* Constrain to 1000px */
+    margin: 80px auto 0; /* Add 10px gap below the header */
+    overflow: hidden; /* Prevent scrolling inside the container */
+}
+
+/* Left Column */
+.left-column {
+    background-color: #2b2b2b;
+    color: #cfcfcf;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.left-column h2 {
+    font-family: 'Orbitron', sans-serif; /* Section header font */
+    font-size: 1.5em;
+    text-transform: uppercase;
+    color: #66ccff; /* Sci-fi blue */
+    text-align: center; /* Centered header */
+    margin-bottom: 10px;
+}
+
+
+/* Resources */
+
+.resource {
+    margin: 10px 0;
+    position: relative; /* Enable stacking context */
+}
+
+.resource_bar {
+    position: relative;
+    width: 100%;
+    height: 40px;
+    background-color: #1e1e1e;
+    border: 2px solid #66ccff; /* Cyan border */
+    z-index: 1; /* Keep this below text */
+}
+
+.resource_bar_fill {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 0; /* Dynamically updated */
+    background-color: #00ffff; /* Brighter cyan */
+    z-index: 0; /* Below everything else */
+    transition: width 0.3s ease-in-out;
+}
+
+.resource_name {
+    position: absolute;
+    left: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: white;
+    font-size: 0.9em;
+    -webkit-text-stroke:
+        0px 0px 4px #000,  /* Base layer for sharpness */
+        0px 0px 4px #000,  /* Slightly larger */
+        0px 0px 4px #000,   /* Slightly larger */
+        0px 0px 4px #000,  /* Slightly larger */
+        0px 0px 8px #000;  /* Further reinforced layer */
+    text-shadow: 
+        0px 0px 4px #000,  /* Base layer for sharpness */
+        0px 0px 4px #000,  /* Slightly larger */
+        0px 0px 4px #000,   /* Slightly larger */
+        0px 0px 4px #000,  /* Slightly larger */
+        0px 0px 8px #000;  /* Further reinforced layer */
+    z-index: 2;
+}
+
+.resource_values {
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: white;
+    font-size: 0.9em;
+    -webkit-text-stroke:
+        0px 0px 4px #000,  /* Base layer for sharpness */
+        0px 0px 4px #000,  /* Slightly larger */
+        0px 0px 4px #000,   /* Slightly larger */
+        0px 0px 4px #000,  /* Slightly larger */
+        0px 0px 8px #000;  /* Further reinforced layer */
+    text-shadow: 
+        0px 0px 4px #000,  /* Base layer for sharpness */
+        0px 0px 4px #000,  /* Slightly larger */
+        0px 0px 4px #000,   /* Slightly larger */
+        0px 0px 4px #000,  /* Slightly larger */
+        0px 0px 8px #000;  /* Further reinforced layer */
+    z-index: 2;
+}
+
+.generate_resource {
+    background: linear-gradient(90deg, #1e1e1e, #3a3a3a);
+    border: 2px solid #66ccff;
+    color: white;
+    width: 400px; /* Fixed button width */
+    text-align: center;
+    padding: 10px 20px;
+    font-size: 1em;
+    font-family: 'Orbitron', sans-serif;
+    text-transform: uppercase;
+    text-shadow: 0 0 5px #00ffff, 0 0 10px #00ffff;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.generate_resource:hover {
+    background: #66ccff;
+    color: #1e1e1e;
+    box-shadow: 0 0 15px #66ccff;
+}
+
+.resource-bar-error {
+    animation: flash-red 0.5s;
+}
+
+@keyframes flash-red {
+    0% {
+        background-color: rgba(255, 0, 0, 0.7);
+    }
+    100% {
+        background-color: initial;
+    }
+}
+
+
+
+/* Initial Fill Percentages */
+#r1-bar {
+    width: 77%; /* 77% filled */
+}
+
+#r2-bar {
+    width: 12%; /* 12% filled */
+}
+
+/* Center Column */
+.center-column {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.center-top-row {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    background-color: #3a3a3a;
+    padding: 10px;
+    border: 1px solid #4d4d4d;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Right Column */
+.right-column {
+    background-color: #2b2b2b;
+    color: #cfcfcf;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column; /* Arrange child elements vertically */
+    height: 100%; /* Fixed height from its container */
+    position: relative; /* Necessary for child absolute positioning */
+}
+
+.right-column h2 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.5em;
+    text-transform: uppercase;
+    color: #66ccff;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+/* Log Window */
+.log-window {
+    background-color: #1e1e1e;
+    border: 1px solid #4d4d4d;
+    border-radius: 5px;
+    padding: 10px;
+    position: absolute;
+    top: 50px; /* Adjust based on header height */
+    bottom: 10px; /* 10px padding from the bottom */
+    left: 10px;
+    right: 10px;
+    overflow-y: auto;
+    scrollbar-width: thin; /* For Firefox */
+    scrollbar-color: #66ccff #1e1e1e; /* For Firefox (thumb and track colors) */
+}
+
+/* Custom Scrollbar for WebKit Browsers */
+.log-window::-webkit-scrollbar {
+    width: 4px; /* Razor-thin scrollbar width */
+}
+
+.log-window::-webkit-scrollbar-track {
+    background: transparent; /* Invisible track to keep focus on the thumb */
+}
+
+.log-window::-webkit-scrollbar-thumb {
+    background: #66ccff; /* Cyan scrollbar thumb */
+    border-radius: 5px; /* Rounded thumb for a clean look */
+}
+
+.log-window::-webkit-scrollbar-thumb:hover {
+    background: #33bbff; /* Brighter cyan on hover */
+}
+
+/* Sci-Fi Buttons */
+.menu-link {
+    text-decoration: none;
+    color: #66ccff;
+    font-weight: bold;
+    text-transform: uppercase;
+    background: linear-gradient(90deg, #1e1e1e, #2b2b2b);
+    padding: 8px 16px;
+    border: 2px solid #66ccff;
+    border-radius: 4px;
+    transition: background 0.3s, color 0.3s;
+}
+
+.menu-link:hover {
+    background: #66ccff;
+    color: #1e1e1e;
+}
+
+.log {
+    margin: 8px 0;
+    padding: 6px 10px;
+    border-radius: 3px;
+}
+
+.log_system {
+    color: #ffd700;
+    background-color: rgba(255, 215, 0, 0.1); /* Semi-transparent gold */
+}
+
+.log_flavor {
+    color: #66ff66;
+    background-color: rgba(102, 255, 102, 0.1); /* Semi-transparent green */
+}
+
+.log-error {
+    color: #ff6666;
+    font-weight: bold;
+}
+
+.log-online {
+    color: #66ccff;
+    font-weight: bold;
+}
+
+.log_fail {
+    color: #ff6666;
+    font-weight: bold;
+    background-color: rgba(255, 102, 102, 0.1);
+}
+
+.log_succeed {
+    color: #66ccff;
+    font-weight: bold;
+    background-color: rgba(102, 204, 255, 0.1);
+}
+
+
+
+
+/* Viewscape */
+.viewscape {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px; /* Padding between buttons */
+    margin-top: 20px; /* Add space below center-top-row */
+}
+

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SANSAR Idle</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Exo+2:wght@400;700&family=Rajdhani:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Top Bar -->
+    <header class="top-bar">
+        <div class="game-title">SANSAR Idle</div>
+        <div class="top-right">
+            <span class="version-number">v0.1</span>
+            <a href="#" class="settings-link">Settings</a>
+        </div>
+    </header>
+
+    <!-- Main Layout -->
+    <div class="main-container">
+        <!-- Left Column -->
+        <aside class="left-column">
+            <h2>Resources</h2>
+
+            <!-- Resource Bar 1 -->
+            <div class="resource">
+                <div class="resource_name">
+                    <span id="r1">Photons</span>
+                </div>
+                <div class="resource_bar">
+                    <div class="resource_bar_fill" id="r1-bar"></div>
+                </div>
+                <div class="resource_values">
+                    <span id="r1v">5</span>/<span id="r1m">20</span>
+                </div>
+            </div>
+
+            <!-- Resource Bar 2 -->
+            <div class="resource">
+                <div class="resource_name">
+                    <span id="r2">Space Dust</span>
+                </div>
+                <div class="resource_bar">
+                    <div class="resource_bar_fill" id="r2-bar"></div>
+                </div>
+                <div class="resource_values">
+                    <span id="r2v">7</span>/<span id="r2m">35</span>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Center Column -->
+        <main class="center-column">
+            <div class="center-top-row">
+                <a href="#" class="menu-link">Stage 1</a>
+                <a href="#" class="menu-link">Stage 2</a>
+            </div>
+
+            <div class="viewscape">
+                <h1>Welcome to SANSAR Idle!</h1>
+                <p>This is where the main content of your game will be displayed.</p>
+            </div>
+        </main>
+
+        <!-- Right Column -->
+        <aside class="right-column">
+            <h2>Logs</h2>
+            <div class="log-window">
+                <p class="log log_system">Game Started</p>
+                <p class="log log_flavor">A mysterious world awaits...</p>
+            </div>
+        </aside>
+    </div>
+</body>
+</html>
